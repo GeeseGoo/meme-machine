@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown'
 function PostsList() {
   const [posts, setPosts] = useState([])
   useEffect(() => {
-    fetch('http://localhost:3000/posts')
+    fetch(import.meta.env.VITE_API_BASE + '/posts')
       .then((res) => res.json())
       .then((data) => setPosts(data))
   }, [])
@@ -51,7 +51,7 @@ function PostPage() {
 
   useEffect(() => {
     if (!isLoaded) {
-      fetch(`http://localhost:3000/posts/${id}`)
+      fetch(import.meta.env.VITE_API_BASE + `/posts/${id}`)
         .then(res => res.json())
         .then(data => {
           setPost(data)
@@ -61,7 +61,7 @@ function PostPage() {
   }, [id, isLoaded])
 
   const handleSubmitComment = () => {
-    fetch(`http://localhost:3000/posts/${id}/comments`, {
+    fetch(import.meta.env.VITE_API_BASE + `/posts/${id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

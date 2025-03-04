@@ -14,7 +14,7 @@ function App() {
   const [newPostContent, setNewPostContent] = useState('')
   
   useEffect(() => {
-    fetch('http://localhost:3000/posts')
+    fetch(import.meta.env.VITE_API_BASE + '/posts')
       .then(res => res.json())
       .then(data => setPosts(data))
   }, []);
@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   function fetchUserData(token) {
-    fetch('http://localhost:3000/api/users/me', {
+    fetch(import.meta.env.VITE_API_BASE + '/api/users/me', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -54,7 +54,7 @@ function App() {
     const username = formData.get('username')
     const password = formData.get('password')
   
-    fetch('http://localhost:3000/login', {
+    fetch(import.meta.env.VITE_API_BASE + '/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function App() {
       return
     }
     
-    fetch('http://localhost:3000/register', {
+    fetch(import.meta.env.VITE_API_BASE + '/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ function App() {
   }
 
   function createPost() {
-    fetch('http://localhost:3000/posts', {
+    fetch(import.meta.env.VITE_API_BASE + '/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
