@@ -1,0 +1,17 @@
+[build]
+builder = "nixpacks"
+
+[[services]]
+name = "api"
+path = "api"
+start_command = "npm start"
+
+[[services]]
+name = "admin"
+path = "admin"
+start_command = "npm start"
+
+[[services]]
+name = "client"
+path = "client"
+start_command = "npm start"
