@@ -136,7 +136,7 @@ function App() {
   }
 
   function handleDeletePost(postId) {
-    fetch(`http://localhost:3000/posts/${postId}`, {
+    fetch(import.meta.env.VITE_API_BASE + `/posts/${postId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -152,7 +152,7 @@ function App() {
 
   function handleDeleteComment(postId, commentId) {
     try {
-    fetch(`http://localhost:3000/posts/${postId}/comments/${commentId}`, {
+    fetch(import.meta.env.VITE_API_BASE + `/posts/${postId}/comments/${commentId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -183,7 +183,7 @@ function App() {
 
   function openPost(post) {
     // Fetch the full post with comments if needed
-    fetch(`http://localhost:3000/posts/${post.id}`)
+    fetch(import.meta.env.VITE_API_BASE + `/posts/${post.id}`)
       .then(res => res.json())
       .then(data => setSelectedPost(data))
   }
