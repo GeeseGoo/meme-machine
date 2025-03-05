@@ -65,14 +65,14 @@ app.post('/register', async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await prisma.user.create({
+    const newUser = await prisma.user.create({
         data: {
             username: username,
             password: hashedPassword,
         },
     });
 
-    const accessToken = generateAccessToken({ username: username, id: user.id });
+    const accessToken = generateAccessToken({ username: username, id: newUser.id });
     res.json({ accessToken: accessToken });
 });
 
