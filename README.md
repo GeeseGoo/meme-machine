@@ -22,8 +22,8 @@ Meme Machine is a platform for exploring the cultural significance of memes. Use
 
 -   **Frontend**: React, React Router, React Markdown
 -   **Backend**: Node.js, Express.js (API)
--   **Database**: MongoDB
--   **Deployment**: Vite for development, environment variables for configuration
+-   **Database**: Postgres, Prisma
+-   **Deployment**: Vite, Railway
 
 ---
 
