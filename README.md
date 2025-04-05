@@ -1,38 +1,11 @@
-# Meme Machine
-
-Welcome to **Meme Machine**, a platform where memes meet cultural analysis. This project is designed to explore the deeper meanings behind viral content while providing a fun and engaging user experience. Built with modern web technologies, Meme Machine is a full-stack application that combines a React-based frontend with a robust backend API.
-
----
-
-## Table of Contents
-
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Getting Started](#getting-started)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [Technical Documentation](#technical-documentation)
-7. [License](#license)
-
----
-
 ## Project Overview
 
-Meme Machine is a platform for exploring the cultural significance of memes. Users can browse posts, read detailed analyses, and contribute their own comments. The project is built with the following stack:
+Meme Machine is all about exploring the cultural significance of memes. Users can browse posts, read detailed analyses, and share their thoughts through comments. The project is built using:
 
 -   **Frontend**: React, React Router, React Markdown
 -   **Backend**: Node.js, Express.js (API)
 -   **Database**: MongoDB
--   **Deployment**: Vite for development, environment variables for configuration
-
----
-
-## Features
-
--   **Post Listings**: View a list of meme-related posts.
--   **Post Details**: Read in-depth analyses of memes.
--   **Comments**: Add and view comments on posts.
--   **Responsive Design**: Optimized for desktop and mobile devices.
+-   **Development Tools**: Vite for fast builds and environment variables for configuration
 
 ---
 
@@ -40,7 +13,7 @@ Meme Machine is a platform for exploring the cultural significance of memes. Use
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Before you begin, make sure you have the following installed:
 
 -   [Node.js](https://nodejs.org/) (v16 or higher)
 -   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
@@ -64,24 +37,32 @@ Ensure you have the following installed:
     npm install
     ```
 
-3. Set up environment variables:
-
-    - Create a `.env` file in the `server` directory with the following:
+    - Create a `.env` file in the `server` directory with:
         ```
-        MONGO_URI=your-mongodb-connection-string
+        DATABASE_URL=your-database-connection-string
         VITE_API_BASE=http://localhost:5000/api
+        ```
+
+3. Set up the database with Prisma:
+
+    - Generate the Prisma client:
+        ```bash
+        npx prisma generate
+        ```
+    - Apply migrations to set up the database schema:
+        ```bash
+        npx prisma migrate dev --name init
         ```
 
 4. Start the development servers:
 
     - Backend:
         ```bash
-        cd server
         npm run dev
         ```
     - Frontend:
         ```bash
-        cd client
+        cd ../client
         npm run dev
         ```
 
@@ -91,33 +72,32 @@ Ensure you have the following installed:
 
 ## Usage
 
--   Navigate to `/posts` to view all posts.
+-   Visit `/posts` to explore all posts.
 -   Click on a post to read its details and comments.
 -   Add comments to share your thoughts.
--   Visit `/about` to learn more about the project.
+-   Check out `/about` to learn more about the project.
 
 ---
 
-## Contributing
+## Authentication with JWT
 
-We welcome contributions! To get started:
+We use **JSON Web Tokens (JWT)** to make logging in simple and secure. This lets users interact with the platform without needing to log in repeatedly.
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix:
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-3. Commit your changes:
-    ```bash
-    git commit -m "Add your message here"
-    ```
-4. Push to your branch:
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-5. Open a pull request.
+### Posting
 
-Please ensure your code adheres to the project's coding standards and includes tests where applicable.
+-   **Who Can Post**: Only logged-in users can create posts.
+-   **What You Can Post**: Posts include a title, content, and metadata like the creation date and author.
+
+### Commenting
+
+-   **Who Can Comment**: Comments can be added by anyone (configurable).
+-   **Real-Time Updates**: Comments appear immediately after submission.
+
+### Example Workflow
+
+1. **Login**: Log in to get your JWT.
+2. **Create a Post**: Use the "Add Post" feature to share your thoughts.
+3. **Add Comments**: Navigate to a post and use the "Add Comment" button to join the conversation.
 
 ---
 
@@ -154,22 +134,10 @@ meme-machine/
 
 -   `GET /api/posts/:id/comments`: Fetch comments for a post.
 
-### Coding Standards
-
--   **Frontend**: Follow [Airbnb's React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react).
--   **Backend**: Follow [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices).
-
-### Testing
-
--   Use [Jest](https://jestjs.io/) for unit tests.
--   Use [React Testing Library](https://testing-library.com/) for frontend testing.
-
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
-
-Happy memeing! 🎉
