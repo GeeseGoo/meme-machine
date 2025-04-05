@@ -4,8 +4,17 @@ Meme Machine is all about exploring the cultural significance of memes. Users ca
 
 -   **Frontend**: React, React Router, React Markdown
 -   **Backend**: Node.js, Express.js (API)
--   **Database**: MongoDB
--   **Development Tools**: Vite for fast builds and environment variables for configuration
+-   **Database**: Postgres, Prisma
+-   **Deployment**: Vite, Railway
+
+---
+
+## Features
+
+-   **Post Listings**: View a list of meme-related posts.
+-   **Post Details**: Read in-depth analyses of memes.
+-   **Comments**: Add and view comments on posts.
+-   **Responsive Design**: Optimized for desktop and mobile devices.
 
 ---
 
